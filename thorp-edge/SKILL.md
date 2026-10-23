@@ -1,14 +1,14 @@
 ---
-name: ED 期权模型
+name: 索普优势模型
 description: >-
   When the user wants to buy short-dated OTM calls or puts (lottery-style) on a
   US ticker and asks which strike is best value, what payoff multiples need, or
-  whether it is positive EV versus history (ED 期权模型).
+  whether it is positive EV versus history (索普优势模型).
   用途：想买短期虚值 call/put（彩票期权）时，挑最划算的行权价并用历史模拟判断是否正 EV。
-  触发说法：ED 期权模型 TQQQ call 10/30
+  触发说法：索普优势模型 TQQQ call 10/30
 ---
 
-# ED 期权模型（买方彩票期权：挑行权价 + 历史模拟 EV）
+# 索普优势模型（买方彩票期权：挑行权价 + 历史模拟 EV）
 
 Input: ticker, direction (call/put), expiry. Optional: budget (U), specific strikes. Analysis only; never place orders.
 
