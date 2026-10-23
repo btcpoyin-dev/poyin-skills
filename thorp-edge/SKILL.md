@@ -1,14 +1,18 @@
 ---
 name: 索普优势模型
 description: >-
-  When the user wants to buy short-dated OTM calls or puts (lottery-style) on a
-  US ticker and asks which strike is best value, what payoff multiples need, or
-  whether it is positive EV versus history (索普优势模型).
-  用途：想买短期虚值 call/put（彩票期权）时，挑最划算的行权价并用历史模拟判断是否正 EV。
+  索普优势模型（以 Ed Thorp 命名）：有概率优势才出手。用户想在美股某标的上买虚值 call/put，
+  问哪个行权价最划算、需要多少倍赔付、历史上是否正 EV 时使用。两张表：表一找性价比（赔率），
+  表二用历史模拟验概率，两样都占优才出手。与到期远近无关。
+  Use when the user wants to buy OTM calls or puts on a US ticker only when there is a
+  probability edge: Table 1 finds the best-value strike (odds), Table 2 verifies win
+  probability by historical simulation; act only when both show an edge.
   触发说法：索普优势模型 TQQQ call 10/30
 ---
 
-# 索普优势模型（买方彩票期权：挑行权价 + 历史模拟 EV）
+# 索普优势模型（有概率优势才出手：表一找赔率 + 表二验概率）
+
+核心：不是买彩票，也不看到期远近。表一挑性价比最好的行权价（赔率），表二用历史模拟验证胜率是否超过正 EV 门槛（概率）；赔率和概率都占优才出手，任一不占优就不做。
 
 Input: ticker, direction (call/put), expiry. Optional: budget (U), specific strikes. Analysis only; never place orders.
 
